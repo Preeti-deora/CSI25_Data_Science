@@ -2,7 +2,7 @@
 
 This repository contains the solution for **Week 5** of the **CSI Program** conducted by **Celebal Technologies**. The task involves predicting house prices using machine learning techniques with advanced data preprocessing and feature engineering.
 
-📁Dataset
+##Dataset
 
 The dataset used is from the [House Prices - Advanced Regression Techniques](https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques) Kaggle competition.
 
@@ -23,7 +23,7 @@ To predict the **Sale Price** of residential homes in Ames, Iowa, using various 
 
 ---
 
-## 🔧 Workflow
+##  Workflow
 
 1. **Data Loading**
    - Import and inspect `train.csv` and `test.csv`.
@@ -47,7 +47,7 @@ To predict the **Sale Price** of residential homes in Ames, Iowa, using various 
 
 ---
 
-## 📊 Model & Evaluation
+## Model & Evaluation
 
 - **Model**: XGBoost Regressor
 - **Cross-Validation**: 5-fold
@@ -56,7 +56,7 @@ To predict the **Sale Price** of residential homes in Ames, Iowa, using various 
 
 ---
 
-## 💻 Installation
+## Installation
 
 Make sure the following Python libraries are installed:
 
