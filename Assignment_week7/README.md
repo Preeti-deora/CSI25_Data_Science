@@ -89,7 +89,7 @@ https://iris-classifier-prateek.streamlit.app/
 
 3. Run the app:
    ```
-   streamlit run Assignment7/app.py
+   streamlit run Assignment_week7/app.py
    ```
 
 ---
