@@ -8,6 +8,10 @@ The app allows users to:
 - Understand the model's behavior through visualizations including feature importance and partial dependence plots
 
 ---
+## 🎥 Sample Demo
+
+![Demo](project.gif)
+
 
 ## 📊 Dataset
 
