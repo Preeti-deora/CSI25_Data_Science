@@ -38,7 +38,7 @@ Assignment_week7/
 
 ![Sample Prediction](project.gif)
 
-
+---
 ## 🔗 Live App
 
 https://iris-classifier-prateek.streamlit.app/
