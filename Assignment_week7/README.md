@@ -1,67 +1,99 @@
-# 🚗 MPG Prediction Web App with Streamlit
+# ⛽ MPG Prediction Web App
 
-A simple, interactive Streamlit web application that predicts **Miles Per Gallon (MPG)** for automobiles using a trained machine learning regression model.
-
-The app allows users to:
-- Input car attributes (e.g., horsepower, weight, cylinders)
-- Receive instant MPG predictions
-- Understand the model's behavior through visualizations including feature importance and partial dependence plots
-
----
-## 🎥 Sample Demo
-
-[![Demo](project.gif)](https://mpg-predictor-csi.streamlit.app/)
-
-🔗 **[Click here to try the live app](https://mpg-predictor-csi.streamlit.app/)**
+Predict fuel efficiency of a car and explore model insights using an interactive machine learning app built with Streamlit.
 
 ---
 
-## 📊 Dataset
+## 📌 Overview
 
-The application uses the **MPG dataset** from `seaborn`, which contains information on various car models such as:
-- Cylinders
-- Displacement
-- Horsepower
-- Weight
-- Acceleration
-- Model year
-- Origin
+This web application predicts the **Miles Per Gallon (MPG)** of a car based on user-input specifications like horsepower, weight, displacement, and more. It uses a trained **Random Forest Regressor** model and provides insights through various visualizations.
 
 ---
 
-## 🔍 Features
+## 📂 Project Structure
 
-- 🚀 **Real-time Prediction** of MPG
-- 📉 **Model Interpretation** via:
-  - Feature importance plot
-  - Partial dependence plots using `sklearn.inspection.PartialDependenceDisplay`
-- 📱 Clean and interactive **Streamlit UI**
-- ✅ Trained **Random Forest Regressor**
-
----
-
-## 🧠 Model Used
-
-- **Random Forest Regressor**
-- Trained using `scikit-learn` on selected features from the MPG dataset
+```
+Assignment_week7/
+├── app.py
+├── mpg_model.pkl
+├── project.gif
+├── train_model.py
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-## 📦 Installation & Setup
+## 🚀 Features
 
-1. **Clone the repository**
-
-git clone https://github.com/your-username/CSI25_Data_Science.git
-cd Assignment_week7/app.py
-
----
-
-2. **Install requirements**
-
-pip install -r requirements.txt
+- 🎯 Predicts car fuel efficiency (MPG) using machine learning  
+- 🧾 Sidebar to input car specs like horsepower, weight, etc.  
+- 📊 Visualizations: Feature importance, actual vs predicted MPG, PDP  
+- 🎨 Aesthetic and interactive Streamlit UI  
+- 💡 Trained on seaborn's `mpg` dataset  
 
 ---
 
-3. **Run the app**
+## 📽️ Sample Prediction Demo
 
-streamlit run app.py
+![Sample Prediction](project.gif)
+
+
+## 🔗 Live App
+
+https://iris-classifier-prateek.streamlit.app/
+---
+
+## 🔧 Technologies Used
+
+- Python  
+- Streamlit  
+- Scikit-learn  
+- Pandas, Matplotlib, Seaborn  
+- Joblib  
+
+---
+
+## 📊 Input Parameters
+
+- `Cylinders` - Number of engine cylinders  
+- `Displacement` - Engine displacement (in cubic inches)  
+- `Horsepower` - Engine horsepower  
+- `Weight` - Vehicle weight (lbs)  
+- `Acceleration` - Time taken to accelerate from 0 to 60 mph  
+- `Model Year` - Year the car model was released  
+- `Origin` - Manufacturing origin (USA, Europe, Japan)  
+- `Car Name` - Vehicle model name  
+
+---
+
+## 🧠 Model Insights
+
+- **Feature Importance** plot shows the most influential features on MPG  
+- **Actual vs Predicted** scatter plot gives a sense of model accuracy  
+- **Partial Dependence Plot** helps visualize how individual features affect predictions  
+
+---
+
+## 📦 How to Run
+
+1. Clone this repo:
+   ```
+   git clone <repo-url>
+   ```
+
+2. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. Run the app:
+   ```
+   streamlit run Assignment7/app.py
+   ```
+
+---
+
+## 👨‍💻 Author
+
+Made with ❤️ by **Preeti Deora**
