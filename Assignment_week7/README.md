@@ -44,8 +44,8 @@ The application uses the **MPG dataset** from `seaborn`, which contains informat
 
 1. **Clone the repository**
 
-git clone https://github.com/your-username/mpg-predictor-streamlit.git
-cd mpg-predictor-streamlit
+git clone https://github.com/your-username/CSI25_Data_Science.git
+cd Assignment_week7/app.py
 
 ---
 
