@@ -8,7 +8,8 @@ from sklearn.inspection import PartialDependenceDisplay
 
 
 df = sns.load_dataset("mpg").dropna()
-model = joblib.load("mpg_model.pkl")
+model = joblib.load("Assignment_week7/mpg_model.pkl")
+
 
 df['origin'] = df['origin'].astype('category').cat.codes
 df['name'] = df['name'].astype('category').cat.codes
