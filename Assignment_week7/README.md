@@ -41,7 +41,7 @@ Assignment_week7/
 ---
 ## 🔗 Live App
 
-https://iris-classifier-prateek.streamlit.app/
+https://mpg-predictor-csi.streamlit.app/
 ---
 
 ## 🔧 Technologies Used
