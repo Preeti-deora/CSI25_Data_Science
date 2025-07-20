@@ -10,8 +10,11 @@ The app allows users to:
 ---
 ## 🎥 Sample Demo
 
-![Demo](project.gif)
+[![Demo](project.gif)](https://mpg-predictor-csi.streamlit.app/)
 
+🔗 **[Click here to try the live app](https://mpg-predictor-csi.streamlit.app/)**
+
+---
 
 ## 📊 Dataset
 
