@@ -5,7 +5,6 @@ import joblib
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.inspection import PartialDependenceDisplay
-import numpy as np
 
 df = sns.load_dataset("mpg").dropna()
 model = joblib.load("Assignment_week7/mpg_model.pkl")
@@ -17,13 +16,14 @@ X = df.drop("mpg", axis=1)
 y = df["mpg"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-st.set_page_config(page_title="MPG Predictor", layout="centered", page_icon="⛽")
+st.set_page_config(page_title="MPG Prediction", layout="wide")
 
-st.title("⛽ MPG Prediction App")
-st.caption("Predict a car's fuel efficiency (MPG) and understand the model's decision process.")
-st.divider()
+st.markdown("<h1 style='text-align: center; color: teal;'>⛽ MPG Prediction Web App</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Predict fuel efficiency of a car and explore model insights</p>", unsafe_allow_html=True)
+st.markdown("---")
 
-st.sidebar.header("📥 Input Parameters")
+st.sidebar.header("🧾 Enter Car Specifications")
+
 def user_input():
     cylinders = st.sidebar.slider("Cylinders", int(df.cylinders.min()), int(df.cylinders.max()), 4)
     displacement = st.sidebar.slider("Displacement", float(df.displacement.min()), float(df.displacement.max()), 150.0)
@@ -51,51 +51,45 @@ def user_input():
 
 input_df = user_input()
 
-st.subheader("🔧 Entered Car Specifications")
-st.dataframe(input_df, use_container_width=True)
-st.divider()
+st.subheader("🔍 Entered Car Details")
+st.dataframe(input_df)
 
 prediction = model.predict(input_df)[0]
-st.subheader("🎯 Predicted MPG")
-st.success(f"Estimated MPG: **{prediction:.2f}**")
+st.markdown("## 🎯 Predicted MPG")
+st.success(f"Estimated Fuel Efficiency: **{prediction:.2f} MPG**")
 
 if prediction >= 30:
-    st.info("✅ Excellent fuel efficiency!")
+    st.info("👍 Excellent fuel efficiency.")
 elif prediction >= 20:
-    st.warning("⚠️ Moderate fuel efficiency.")
+    st.warning("👌 Average fuel efficiency.")
 else:
-    st.error("❌ Poor fuel efficiency.")
+    st.error("👎 Poor fuel efficiency.")
 
-st.divider()
+st.markdown("---")
 
-st.subheader("📊 Feature Importance")
-importances = model.feature_importances_
-feat_imp_df = pd.Series(importances, index=X.columns).sort_values()
+with st.expander("📊 Feature Importance"):
+    importances = model.feature_importances_
+    feat_imp_df = pd.Series(importances, index=X.columns).sort_values()
+    fig1, ax1 = plt.subplots()
+    feat_imp_df.plot(kind='barh', color='skyblue', ax=ax1)
+    ax1.set_title("Most Influential Features")
+    st.pyplot(fig1)
 
-fig1, ax1 = plt.subplots(figsize=(8, 5))
-feat_imp_df.plot(kind='barh', color=plt.cm.viridis_r(np.linspace(0, 1, len(feat_imp_df))), ax=ax1)
-ax1.set_title("Which Features Influence MPG Most", fontsize=14)
-ax1.set_xlabel("Importance")
-ax1.set_ylabel("Feature")
-st.pyplot(fig1)
-st.divider()
+with st.expander("📉 Actual vs Predicted MPG (on Test Set)"):
+    y_pred = model.predict(X_test)
+    fig2, ax2 = plt.subplots()
+    ax2.scatter(y_test, y_pred, alpha=0.6, c='orange', edgecolors='k')
+    ax2.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
+    ax2.set_xlabel("Actual MPG")
+    ax2.set_ylabel("Predicted MPG")
+    ax2.set_title("Prediction Accuracy")
+    st.pyplot(fig2)
 
-st.subheader("📉 Actual vs Predicted MPG (Test Data)")
-y_pred = model.predict(X_test)
+with st.expander("🧠 Feature Sensitivity (PDP)"):
+    selected_feature = st.selectbox("Choose a Feature to Visualize", X.columns)
+    fig3, ax3 = plt.subplots()
+    PartialDependenceDisplay.from_estimator(model, X_test, [selected_feature], ax=ax3)
+    st.pyplot(fig3)
 
-fig2, ax2 = plt.subplots(figsize=(6, 5))
-sc = ax2.scatter(y_test, y_pred, c=y_test, cmap='coolwarm', edgecolors='k')
-ax2.plot([y.min(), y.max()], [y.min(), y.max()], '--', color='gray')
-ax2.set_xlabel("Actual MPG")
-ax2.set_ylabel("Predicted MPG")
-ax2.set_title("Model Accuracy Comparison")
-fig2.colorbar(sc, label='True MPG')
-st.pyplot(fig2)
-st.divider()
-
-selected_feature = st.selectbox("🔍 Explore Feature Impact (Partial Dependence)", X.columns)
-st.write(f"Showing how `{selected_feature}` influences predicted MPG on average.")
-
-fig3, ax3 = plt.subplots(figsize=(7, 4))
-PartialDependenceDisplay.from_estimator(model, X_test, [selected_feature], ax=ax3)
-st.pyplot(fig3)
+st.markdown("---")
+st.markdown("<p style='text-align:center;'>🚗 Built with ❤️ by Preeti</p>", unsafe_allow_html=True)
